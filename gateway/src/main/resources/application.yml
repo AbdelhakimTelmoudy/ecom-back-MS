@@ -1,0 +1,30 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowed-headers: "*"
+            exposed-headers: "*"
+      routes:
+        - id: r0
+          uri: http://localhost:8083
+          predicates:
+            - Path= /product-service/**
+          filters:
+            - StripPrefix=1
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            
+        - id: r1
+          uri: http://localhost:8082
+          predicates:
+            - Path= /category-service/**
+          filters:
+            - StripPrefix=1
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
