@@ -1,13 +1,16 @@
 package com.ecom.productservice.repositorys;
 
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.ecom.productservice.entities.Product;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+import com.ecom.productservice.entities.Category;
 
-	 Page<Product> findByReferenceContaining(String name,Pageable pageable);
 
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+	
+	Page<Category> findCategoryByNameContaining(String name,Pageable pageable);
 
 }

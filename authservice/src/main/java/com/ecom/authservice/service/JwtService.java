@@ -19,8 +19,7 @@ public class JwtService {
 
 
     public void validateToken(final String token) {
-    	System.out.println( Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token));
-       
+    	 Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token);
         
     }
 
